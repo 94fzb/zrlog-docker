@@ -1,0 +1,1 @@
+sh stop.sh && sh remove.sh && sh build.sh && sh start.sh

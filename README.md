@@ -1,6 +1,6 @@
-# zrlog-Docker
+# ZrLog-Docker
 
-> 方便一些不熟悉 Java 能更快捷的搭建起 ZrLog
+> 方便一些不熟悉 Java 的能更快捷的搭建起 ZrLog
 
 注：目前仅支持 Unix 系统，Windows 系统占不支持
 
@@ -44,6 +44,7 @@ db.database=zrlog_demo
 server.port=8080
 # 容器对外公开的端口
 export.port=28080
+app.name=zrlog
 ```
 
 ## 运行

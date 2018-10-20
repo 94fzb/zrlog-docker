@@ -1,1 +1,2 @@
-cd /opt/tomcat && java -Xmx128m -Dfile.encoding=utf-8 -jar zrlog.jar
+#!/usr/bin/env bash
+cd /opt/tomcat && sh bin/run.sh

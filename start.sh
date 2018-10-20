@@ -1,6 +1,7 @@
 #/bin/sh
 configFile='config/config.properties'
 previewConfigFile='config/preview.properties'
+timezone='Asia/Chongqing'
 
 if [ -f ${configFile} ]; 
 then
@@ -18,7 +19,7 @@ previewProp() {
 }
 
 # start docker
-docker run -d -p $(prop 'export.port'):$(prop 'server.port') -e PREVIEW_MODE="$(previewProp 'preview')" \
+docker run -d -p $(prop 'export.port'):$(prop 'server.port') -e TZ=${timezone} -e PREVIEW_MODE="$(previewProp 'preview')" \
  -e DOCKER_MODE='true' \
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \

@@ -1,8 +1,8 @@
-FROM williamyeh/java8
+FROM adoptopenjdk/openjdk11
 MAINTAINER “xiaochun” xchun90@163.com
 CMD [“/bin/bash”]
 ARG DUMMY=unknown
-RUN wget http://dl.zrlog.com/release/zrlog.zip?${DUMMY} -O zrlog.zip
+RUN curl -o zrlog.zip http://dl.zrlog.com/release/zrlog.zip?${DUMMY}
 RUN mkdir -p /opt/tomcat
 RUN cp zrlog.zip /opt/tomcat/ROOT.zip
 RUN cd  /opt/tomcat && jar -xf ROOT.zip

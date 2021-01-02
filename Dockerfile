@@ -1,6 +1,7 @@
 FROM adoptopenjdk/openjdk11
 MAINTAINER “xiaochun” xchun90@163.com
 CMD [“/bin/bash”]
+ARG $DUMMY
 RUN mkdir -p /opt/tomcat
 RUN curl -o /opt/tomcat/ROOT.zip http://dl.zrlog.com/release/zrlog.zip?${DUMMY}
 RUN cd  /opt/tomcat && jar -xf ROOT.zip

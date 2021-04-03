@@ -19,7 +19,7 @@ previewProp() {
 }
 
 # start docker
-docker run -d --restart unless-stopped -p $(prop 'export.port'):$(prop 'server.port') -e TZ=${timezone} -e PREVIEW_MODE="$(previewProp 'preview')" \
+docker run -d --restart=always  -m=256m -p $(prop 'export.port'):$(prop 'server.port') -e TZ=${timezone} -e PREVIEW_MODE="$(previewProp 'preview')" \
  -e DOCKER_MODE='true' \
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \

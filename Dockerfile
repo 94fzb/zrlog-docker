@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM openjdk:17
 MAINTAINER “xiaochun” xchun90@163.com
 CMD [“/bin/bash”]
 ARG DUMMY

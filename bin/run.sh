@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cd /opt/tomcat && sh bin/run.sh
+cd /opt/zrlog && sh bin/run.sh

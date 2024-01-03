@@ -8,11 +8,11 @@
 
 ### Debian/Ubuntu
 
-`apt-get install docker.io`
+`apt-get install docker.io docker-buildx`
 
 ### RedHat/CentOS
 
-`yum install docker.io`
+`yum install docker.io docker-buildx`
 
 ----
 

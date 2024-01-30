@@ -27,5 +27,5 @@ docker run -d --restart=always  -m=256m -p $(prop 'export.port'):$(prop 'server.
  -e DB_PROPERTIES='password='$(prop 'db.password')'
 jdbcUrl=jdbc:mysql://'$(prop 'db.host')':'$(prop 'db.port')'/'$(prop 'db.database')'?&characterEncoding=UTF-8
 user='$(prop 'db.username')'
-driverClass=driverClass=com.mysql.cj.jdbc.Driver'  \
+driverClass=com.mysql.cj.jdbc.Driver'  \
 $(prop 'app.name')

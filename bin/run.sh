@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-cd /opt/zrlog && sh bin/run.sh
+chmod a+x /opt/zrlog/zrlog
+ls /opt/zrlog
+cd /opt/zrlog && ./zrlog

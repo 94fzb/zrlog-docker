@@ -1,12 +1,12 @@
 # 构建阶段
-FROM ubuntu:noble AS deps
+FROM registry.cn-chengdu.aliyuncs.com/zrlog/ubuntu:noble AS deps
 MAINTAINER "xiaochun" xchun90@163.com
 # 替换 sources.list 中的所有 Ubuntu 镜像源为 Tsinghua University's mirror
 #RUN sed -i 's|http://archive.ubuntu.com/ubuntu/|https://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g; s|http://security.ubuntu.com/ubuntu/|https://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g' /etc/apt/sources.list
 # 更新并安装所需工具
 RUN apt update && apt install zip curl -y
 # start build
-FROM ubuntu:noble
+FROM registry.cn-chengdu.aliyuncs.com/zrlog/ubuntu:noble
 # 复制构建阶段的 zip 和 curl 工具
 COPY --from=deps /usr/bin/zip /usr/bin/zip
 COPY --from=deps /usr/bin/curl /usr/bin/curl

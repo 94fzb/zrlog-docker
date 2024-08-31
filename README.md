@@ -30,8 +30,9 @@ fork 当前工程为一个私有仓库，或者直接 download zip
 
 安装完后需要将对应的数据库信息保存到 config/config.properties 里面，以保障使用 start.sh 可以正常读取到数据库信息
 
-默认对外访问的端口是 `28080`，如果占用，改 install.sh 就可以了
+默认对外访问的端口是 `28080`，如果占用，改 config/config.properties 就可以了
 
+### config.properties
 
 ```
 # 数据库信息

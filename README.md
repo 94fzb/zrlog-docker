@@ -22,7 +22,7 @@ fork 当前工程为一个私有仓库，或者直接 download zip
 
 ## 构建 ZrLog 容器
 
-`sh build.sh` 如果后台提示有新版本可以通过这个命令构建最新 zrlog 容器 
+`sh build.sh`
 
 ## 安装
 

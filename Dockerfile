@@ -2,7 +2,7 @@
 FROM registry.cn-chengdu.aliyuncs.com/hibegin/ubuntu:noble AS deps
 MAINTAINER "xiaochun" xchun90@163.com
 # 替换 sources.list 中的所有 Ubuntu 镜像源为 Tsinghua University's mirror
-#RUN sed -i 's|http://archive.ubuntu.com/ubuntu/|https://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g; s|http://security.ubuntu.com/ubuntu/|https://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g' /etc/apt/sources.list
+RUN sed -i 's|http://archive.ubuntu.com/ubuntu/|http://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g; s|http://security.ubuntu.com/ubuntu/|http://mirrors.tuna.tsinghua.edu.cn/ubuntu/|g' /etc/apt/sources.list.d/ubuntu.sources
 # 更新并安装所需工具
 RUN apt update && apt install zip curl -y
 # start build

@@ -12,7 +12,7 @@ exit 0
 fi
 
 prop() {
-    grep "${1}" ${configFile}|cut -d'=' -f2
+    grep "${1}" "${configFile}"|awk -F ${1}'=' '{print $2}'
 }
 previewProp() {
     grep "${1}" ${previewConfigFile}|cut -d'=' -f2
@@ -28,4 +28,5 @@ docker run -d --restart=always  -m=384m -p $(prop 'export.port'):$(prop 'server.
 jdbcUrl=jdbc:mysql://'$(prop 'db.host')':'$(prop 'db.port')'/'$(prop 'db.database')'?&characterEncoding=UTF-8
 user='$(prop 'db.username')'
 driverClass=com.mysql.cj.jdbc.Driver'  \
+$(prop 'append.args') \
 $(prop 'app.name')

@@ -2,7 +2,7 @@
 configFile='config/config.properties'
 
 prop() {
-    grep "${1}" ${configFile}|cut -d'=' -f2
+    grep "${1}" "${configFile}"|awk -F ${1}'=' '{print $2}'
 }
 
 docker run -d -p $(prop 'export.port'):$(prop 'server.port') \

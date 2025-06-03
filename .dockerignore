@@ -1,0 +1,5 @@
+.git
+*.mvn
+**/**
+bin/run.sh
+.DS_Store

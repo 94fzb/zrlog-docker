@@ -32,7 +32,9 @@ fork 当前工程为一个私有仓库，或者直接 download zip
 
 默认对外访问的端口是 `28080`，如果占用，改 config/config.properties 就可以了
 
-### config.properties
+### 配置文件格式
+
+cat config/config-template.properties
 
 ```
 # 数据库信息
@@ -65,3 +67,4 @@ app.name=zrlog
 - Docker 本身无状态，所以有上传的图片的需求，需要使用云存储，目前 ZrLog 已支持了 `七牛云`和`腾讯云`
 - 后台提供的文件编辑功能也是会因为 Docker 容器重启而丢失
 - config 目录下面的 preview.properties 不需要配置
+- config 目录下面的 config-template.properties 仅为模版格式，实际运行时脚步依赖的文件名称为 `config.properties`

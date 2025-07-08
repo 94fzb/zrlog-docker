@@ -25,7 +25,7 @@ docker run -d --restart=always  -m=384m -p $(prop 'export.port'):$(prop 'server.
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \
  -e DB_PROPERTIES='password='$(prop 'db.password')'
-jdbcUrl=jdbc:mysql://'$(prop 'db.host')':'$(prop 'db.port')'/'$(prop 'db.database')'?&characterEncoding=UTF-8
+jdbcUrl=jdbc:'$(prop 'db.type')'://'$(prop 'db.host')':'$(prop 'db.port')'/'$(prop 'db.database')'?&characterEncoding=UTF-8
 user='$(prop 'db.username')'
 driverClass=com.mysql.cj.jdbc.Driver'  \
 $(prop 'append.args') \

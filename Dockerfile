@@ -20,7 +20,7 @@ COPY --from=deps /etc/ssl /etc/ssl
 CMD ["/bin/bash"]
 ARG DUMMY
 RUN mkdir -p /opt/zrlog
-RUN /usr/bin/curl -L  -o /opt/zrlog/zrlog.zip https://dl.zrlog.com/preview/zrlog-Linux-x86_64.zip?${DUMMY}
+RUN /usr/bin/curl -L  -o /opt/zrlog/zrlog.zip https://dl.zrlog.com/preview/zrlog-Linux-amd64.zip?${DUMMY}
 RUN cd  /opt/zrlog && unzip zrlog.zip
 ADD /bin/run.sh /run.sh
 RUN chmod a+x /run.sh

@@ -6,6 +6,8 @@ prop() {
 }
 
 docker run -d -p $(prop 'export.port'):$(prop 'server.port') \
+ -e APP_NAME="$(prop 'app.name')" \
+ -e EXPORT_PORT="$(prop 'export.port')" \
  -e DOCKER_MODE='true' \
  -e contextPath="$(prop 'contextPath')" \
 $(prop 'app.name')

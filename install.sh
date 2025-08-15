@@ -1,5 +1,5 @@
 #/bin/sh
-configFile='config/install-config.properties'
+configFile='config/base-config.properties'
 
 prop() {
     grep "${1}" "${configFile}"|awk -F ${1}'=' '{print $2}'

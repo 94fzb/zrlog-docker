@@ -1,4 +1,5 @@
 #/bin/sh
+baseConfigFile='config/base-config.properties'
 configFile='config/config.properties'
 previewConfigFile='config/preview.properties'
 timezone='Asia/Chongqing'
@@ -11,9 +12,14 @@ echo 'Not found configFile: '${configFile}
 exit 0
 fi
 
-prop() {
+dbProp() {
     grep "${1}" "${configFile}"|awk -F ${1}'=' '{print $2}'
 }
+
+prop() {
+    grep "${1}" "${baseConfigFile}"|awk -F ${1}'=' '{print $2}'
+}
+
 previewProp() {
     grep "${1}" ${previewConfigFile}|cut -d'=' -f2
 }
@@ -25,8 +31,8 @@ docker run -d --restart=always  -m=384m -p $(prop 'expose.port'):$(prop 'server.
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \
  -e DB_PROPERTIES='password='$(prop 'db.password')'
-jdbcUrl=jdbc:'$(prop 'db.type')'://'$(prop 'db.host')':'$(prop 'db.port')'/'$(prop 'db.database')'?&characterEncoding=UTF-8
-user='$(prop 'db.username')'
+jdbcUrl=jdbc:'$(dbProp 'db.type')'://'$(dbProp 'db.host')':'$(dbProp 'db.port')'/'$(dbProp 'db.database')'
+user='$(dbProp 'db.username')'
 driverClass=com.mysql.cj.jdbc.Driver'  \
 $(prop 'append.args') \
 $(prop 'app.name')

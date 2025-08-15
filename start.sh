@@ -23,6 +23,7 @@ docker run -d --restart=always  -m=384m -p $(prop 'export.port'):$(prop 'server.
  -e DOCKER_MODE='true' \
  -e contextPath="$(prop 'contextPath')" \
  -e APP_NAME="$(prop 'app.name')" \
+ -e EXPORT_PORT="$(prop 'export.port')" \
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \
  -e DB_PROPERTIES='password='$(prop 'db.password')'

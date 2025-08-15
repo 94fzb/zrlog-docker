@@ -39,10 +39,11 @@ cat config/config-template.properties
 ```
 # 数据库信息
 db.password=123456
-db.host=172.18.89.71
+db.host=172.17.0.1
 db.port=3306
-db.username=zrlog_demo
-db.database=zrlog_demo
+db.username=zrlog_test
+db.database=zrlog_test
+db.type=mysql
 # 容器里 tomcat 使用的端口
 server.port=8080
 # 容器对外公开的端口
@@ -67,4 +68,4 @@ app.name=zrlog
 - Docker 本身无状态，所以有上传的图片的需求，需要使用云存储，目前 ZrLog 已支持了 `七牛云`和`腾讯云`
 - 后台提供的文件编辑功能也是会因为 Docker 容器重启而丢失
 - config 目录下面的 preview.properties 不需要配置
-- config 目录下面的 config-template.properties 仅为模版格式，实际运行时脚步依赖的文件名称为 `config.properties`
+- config 目录下面的 config-template.properties 仅为模版格式，实际运行时脚本依赖的文件名称为 `config.properties`

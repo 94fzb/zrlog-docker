@@ -30,9 +30,9 @@ docker run -d --restart=always  -m=384m -p $(prop 'expose.port'):$(prop 'server.
  -e contextPath="$(prop 'contextPath')" \
  -e DEFAULT_USERNAME="$(previewProp 'default.username')" \
  -e DEFAULT_PASSWORD="$(previewProp 'default.password')" \
- -e DB_PROPERTIES='password='$(dbProp 'db.password')'
-jdbcUrl=jdbc:'$(dbProp 'db.type')'://'$(dbProp 'db.host')':'$(dbProp 'db.port')'/'$(dbProp 'db.database')'
+ -e DB_PROPERTIES='jdbcUrl=jdbc:'$(dbProp 'db.type')'://'$(dbProp 'db.host')':'$(dbProp 'db.port')'/'$(dbProp 'db.database')'
 user='$(dbProp 'db.username')'
+password='$(dbProp 'db.password')'
 driverClass=com.mysql.cj.jdbc.Driver'  \
 $(prop 'append.args') \
 $(prop 'app.name')

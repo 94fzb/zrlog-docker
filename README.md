@@ -28,28 +28,9 @@ fork 当前工程为一个私有仓库，或者直接 download zip
 
 `sh install.sh`
 
+默认对外访问的端口是 `28080`，如果占用，改 config/install-config.properties 就可以了
+
 安装完后需要将对应的数据库信息保存到 config/config.properties 里面，以保障使用 start.sh 可以正常读取到数据库信息
-
-默认对外访问的端口是 `28080`，如果占用，改 config/config.properties 就可以了
-
-### 配置文件格式
-
-cat config/config-template.properties
-
-```
-# 数据库信息
-db.password=123456
-db.host=172.17.0.1
-db.port=3306
-db.username=zrlog_test
-db.database=zrlog_test
-db.type=mysql
-# 容器里 tomcat 使用的端口
-server.port=8080
-# 容器对外公开的端口
-export.port=28080
-app.name=zrlog
-```
 
 ## 运行
 

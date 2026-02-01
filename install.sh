@@ -9,6 +9,6 @@ prop() {
 docker run -d -p $(prop 'expose.port'):$(prop 'server.port') -e TZ=${timezone} \
  -e APP_NAME="$(prop 'app.name')" \
  -e EXPOSE_PORT="$(prop 'expose.port')" \
- -e DOCKER_MODE='true' \
+ -e DOCKER_MODE_START_BY='shell' \
  -e contextPath="$(prop 'contextPath')" \
 $(prop 'app.name')

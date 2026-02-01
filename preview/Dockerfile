@@ -20,7 +20,7 @@ COPY --from=deps /etc/ssl /etc/ssl
 CMD ["/bin/bash"]
 ARG TARGETARCH
 RUN mkdir -p /opt/zrlog
-RUN /usr/bin/curl -L -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"  -o /opt/zrlog/zrlog.zip https://pub-c16cba848aff4e6b8d8e0d00f0f741f0.r2.dev/release/zrlog-Linux-${TARGETARCH}.zip?${DUMMY}
+RUN /usr/bin/curl -L -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"  -o /opt/zrlog/zrlog.zip https://pub-c16cba848aff4e6b8d8e0d00f0f741f0.r2.dev/preview/zrlog-Linux-${TARGETARCH}.zip?${DUMMY}
 RUN cd  /opt/zrlog && unzip zrlog.zip
 RUN chmod a+x /opt/zrlog/zrlog
 RUN rm /opt/zrlog/zrlog.zip

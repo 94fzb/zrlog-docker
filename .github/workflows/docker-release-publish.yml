@@ -40,7 +40,7 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            zrlog/zrlog:3.3.0
+            zrlog/zrlog:3.3.1
             zrlog/zrlog:latest
-            registry.cn-chengdu.aliyuncs.com/hibegin/zrlog:3.3.0
+            registry.cn-chengdu.aliyuncs.com/hibegin/zrlog:3.3.1
             registry.cn-chengdu.aliyuncs.com/hibegin/zrlog:latest

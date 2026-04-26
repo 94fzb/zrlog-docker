@@ -20,7 +20,7 @@ jobs:
         id: fetch_release
         run: |
           # 调用官方接口获取 zrlog 真实最新版本
-          CLEAN_VERSION=$(curl -sL https://dl.zrlog.com/release/last.version.json | jq -r '.version')
+          CLEAN_VERSION=$(curl -sL https://pub-c16cba848aff4e6b8d8e0d00f0f741f0.r2.dev/release/last.version.json | jq -r '.version')
           
           echo "LATEST_VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
           echo "Found latest release: $CLEAN_VERSION"

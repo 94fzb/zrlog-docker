@@ -1,0 +1,57 @@
+name: Auto Update ZrLog Version PR
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小时检查一次
+  workflow_dispatch:      # 也保留了手动触发按钮，方便你随时测试
+
+permissions:
+  contents: write
+  pull-requests: write # 允许创建 PR
+
+jobs:
+  check-new-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Latest ZrLog Release
+        id: fetch_release
+        run: |
+          # 调用官方接口获取 zrlog 真实最新版本
+          CLEAN_VERSION=$(curl -sL https://dl.zrlog.com/release/last.version.json | jq -r '.version')
+          
+          echo "LATEST_VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
+          echo "Found latest release: $CLEAN_VERSION"
+
+      - name: Update YML Files
+        run: |
+          # 提取 docker-release-publish.yml 当前写的旧版本号
+          OLD_VERSION=$(grep -oE 'zrlog/zrlog:[0-9]+\.[0-9]+\.[0-9]+[a-zA-Z0-9.\-]*' .github/workflows/docker-release-publish.yml | head -1 | cut -d':' -f2)
+          echo "Current version in yaml: $OLD_VERSION"
+          
+          if [ "$OLD_VERSION" != "${{ env.LATEST_VERSION }}" ] && [ "${{ env.LATEST_VERSION }}" != "null" ]; then
+            echo "Updating version from $OLD_VERSION to ${{ env.LATEST_VERSION }}"
+            # 安全替换文件中的版本号
+            sed -i "s/zrlog:${OLD_VERSION}/zrlog:${{ env.LATEST_VERSION }}/g" .github/workflows/docker-release-publish.yml
+          else
+            echo "Version is up to date or invalid. No changes made."
+          fi
+
+      - name: Create Pull Request (Merge Request)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update zrlog docker version to ${{ env.LATEST_VERSION }}"
+          title: "🚀 自动更新: ZrLog Docker 镜像升级到 ${{ env.LATEST_VERSION }}"
+          body: |
+            🤖 本 PR 由 GitHub Actions 自动生成。
+            
+            检测到 `94fzb/zrlog` 发布了新的版本：**${{ env.LATEST_VERSION }}**。
+            
+            我已经帮你修改好了 `docker-release-publish.yml` 中的版本号。
+            👉 **你只需要 Review 并点击 Merge（合并），即可触发最新 Docker 镜像的构建与发布！**
+          branch: "bot/update-version-${{ env.LATEST_VERSION }}"
+          base: main
+          delete-branch: true

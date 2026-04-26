@@ -25,16 +25,14 @@ jobs:
           echo "LATEST_VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
           echo "Found latest release: $CLEAN_VERSION"
 
-      - name: Update YML Files
+      - name: Update VERSION.txt
         run: |
-          # 提取 docker-release-publish.yml 当前写的旧版本号
-          OLD_VERSION=$(grep -oE 'zrlog/zrlog:[0-9]+\.[0-9]+\.[0-9]+[a-zA-Z0-9.\-]*' .github/workflows/docker-release-publish.yml | head -1 | cut -d':' -f2)
-          echo "Current version in yaml: $OLD_VERSION"
+          OLD_VERSION=$(cat VERSION.txt | tr -d '[:space:]')
+          echo "Current version in file: $OLD_VERSION"
           
           if [ "$OLD_VERSION" != "${{ env.LATEST_VERSION }}" ] && [ "${{ env.LATEST_VERSION }}" != "null" ]; then
             echo "Updating version from $OLD_VERSION to ${{ env.LATEST_VERSION }}"
-            # 安全替换文件中的版本号
-            sed -i "s/zrlog:${OLD_VERSION}/zrlog:${{ env.LATEST_VERSION }}/g" .github/workflows/docker-release-publish.yml
+            echo "${{ env.LATEST_VERSION }}" > VERSION.txt
           else
             echo "Version is up to date or invalid. No changes made."
           fi
@@ -50,7 +48,7 @@ jobs:
             
             检测到 `94fzb/zrlog` 发布了新的版本：**${{ env.LATEST_VERSION }}**。
             
-            我已经帮你修改好了 `docker-release-publish.yml` 中的版本号。
+            我已经帮你修改好了 `VERSION.txt` 文件。
             👉 **你只需要 Review 并点击 Merge（合并），即可触发最新 Docker 镜像的构建与发布！**
           branch: "bot/update-version-${{ env.LATEST_VERSION }}"
           base: master

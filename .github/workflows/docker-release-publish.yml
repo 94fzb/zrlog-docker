@@ -2,6 +2,7 @@ name: ZrLog release version publish
 
 on:
   workflow_dispatch:      # 可手动触发（推荐保留）
+  pull_request:
 
 jobs:
   build:

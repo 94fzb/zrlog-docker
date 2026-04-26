@@ -53,5 +53,5 @@ jobs:
             我已经帮你修改好了 `docker-release-publish.yml` 中的版本号。
             👉 **你只需要 Review 并点击 Merge（合并），即可触发最新 Docker 镜像的构建与发布！**
           branch: "bot/update-version-${{ env.LATEST_VERSION }}"
-          base: main
+          base: master
           delete-branch: true

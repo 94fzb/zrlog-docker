@@ -1,8 +1,15 @@
 name: ZrLog release version publish
 
 on:
-  workflow_dispatch:      # 可手动触发（推荐保留）
-  pull_request:
+  push:
+    branches:
+      - main
+      - master # 兼容 master
+    paths:
+      - 'VERSION.txt'
+      - '.github/workflows/docker-release-publish.yml'
+      - 'Dockerfile'
+  workflow_dispatch:      # 可手动触发
 
 jobs:
   build:

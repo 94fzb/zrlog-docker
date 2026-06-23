@@ -4,10 +4,10 @@
 
 ## 当前维护位置
 
-- Dockerfile: <https://github.com/94fzb/zrlog/tree/main/docker>
-- 正式镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/main/.github/workflows/docker-release-publish.yml>
-- 预览镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/main/.github/workflows/docker-preview-publish.yml>
-- 发布规则说明: <https://github.com/94fzb/zrlog/blob/main/doc/release.md>
+- Dockerfile: <https://github.com/94fzb/zrlog/tree/master/docker>
+- 正式镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/master/.github/workflows/docker-release-publish.yml>
+- 预览镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/master/.github/workflows/docker-preview-publish.yml>
+- 发布规则说明: <https://github.com/94fzb/zrlog/blob/master/doc/release.md>
 
 ## 推荐使用方式
 

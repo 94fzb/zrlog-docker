@@ -1,50 +1,35 @@
-# ZrLog-Docker
+# ZrLog Docker Legacy
 
-> 方便一些不熟悉 Java 的能更快捷的搭建起 ZrLog
+本仓库已经降级为历史参考仓库。ZrLog 的 Dockerfile、Docker 镜像构建和正式发布流程已经合并回主仓库 `94fzb/zrlog`，后续不要再从本仓库发布镜像或维护版本号。
 
-注：目前仅支持 Unix 系统，Windows 系统占不支持
+## 当前维护位置
 
-## Docker 安装
+- Dockerfile: <https://github.com/94fzb/zrlog/tree/main/docker>
+- 正式镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/main/.github/workflows/docker-release-publish.yml>
+- 预览镜像发布 workflow: <https://github.com/94fzb/zrlog/blob/main/.github/workflows/docker-preview-publish.yml>
+- 发布规则说明: <https://github.com/94fzb/zrlog/blob/main/doc/release.md>
 
-### Debian/Ubuntu
+## 推荐使用方式
 
-`apt-get install docker.io docker-buildx`
+新用户直接使用主仓发布的镜像：
 
-### RedHat/CentOS
+```shell
+docker run -p 8080:8080 -v "$(pwd)/conf:/opt/zrlog/conf" zrlog/zrlog
+```
 
-`yum install docker.io docker-buildx`
+需要修改 Docker 构建逻辑时，请在主仓 `zrlog/docker` 下修改，并通过主仓 workflow 验证。
 
-----
+## 本仓库保留内容
 
-准备结束
+本仓库仅保留早期独立 Docker 仓库的脚本和 Dockerfile，方便追溯历史实现：
 
-fork 当前工程为一个私有仓库，或者直接 download zip
+- `Dockerfile`
+- `preview/Dockerfile`
+- `build.sh`
+- `install.sh`
+- `start.sh`
+- `stop.sh`
+- `upgrade.sh`
+- `config/base-config.properties`
 
-## 构建 ZrLog 容器
-
-`sh build.sh`
-
-## 安装
-
-`sh install.sh`
-
-默认对外访问的端口是 `28080`，如果占用，改 config/base-config.properties 就可以了
-
-## 运行
-
-`sh start.sh`
-
-## 升级
-
-`sh upgrade.sh`
-
-## 停止
-
-`sh stop.sh`
-
-## 其他
-
-- Docker 本身无状态，所以有上传的图片的需求，需要使用云存储，目前 ZrLog 已支持了 `七牛云`和`腾讯云`
-- 后台提供的文件编辑功能也是会因为 Docker 容器重启而丢失
-- config 目录下面的 preview.properties 不需要配置
-- config 目录下面的 config-template.properties 仅为模版格式，实际运行时脚本依赖的文件名称为 `config.properties`
+这些文件不再作为正式发布来源。旧的自动版本更新、release 镜像发布和 preview 镜像发布 workflow 已移除，避免和主仓 Docker 发布链路重复。
